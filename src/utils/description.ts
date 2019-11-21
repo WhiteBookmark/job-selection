@@ -1,10 +1,5 @@
 import { Component, Vue } from 'vue-property-decorator';
 
-interface Company {
-	name: string;
-	requirements: Array<string | string[]>;
-}
-
 @Component
 export class StringMixins extends Vue {
 	public isVowel(character: string): boolean {

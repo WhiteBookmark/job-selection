@@ -11,8 +11,8 @@
 					{{company.length}}
 				</p>
 				<p>
-					<b>Qualified Jobs:</b>
-					{{company.length}}
+					<b>Qualifications:</b>
+					{{data.qualifications.join(', ')}}
 				</p>
 			</v-col>
 		</v-row>

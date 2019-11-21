@@ -33,24 +33,25 @@ const states = {
 			requirements: [['Storage Place', 'Garage']],
 		},
 		{
-			name: 'Company J',
+			name: 'Company I',
 			requirements: [],
 		},
 		{
-			name: 'Company K',
+			name: 'Company J',
 			requirements: ['PayPal Account'],
 		},
 		{
+			name: 'Company K',
+			requirements: ['PayPal Account', 'Motorcycle', 'Motorcycle License'],
+		},
+		{
 			name: 'Company L',
-			requirements: [
-				['PayPal Account', 'Bank Account'],
-				['Motorcycle', 'Car'],
-			],
+			requirements: [['Motorcycle', 'Motorcycle License']],
 		},
 	],
 	bioData: {
-		name: 'Jonny Escobar',
-		qualifications: ['PayPal', 'Motorcycle', 'Motorcycle License'],
+		name: 'Suleman Khan',
+		qualifications: ['PayPal Account', 'Motorcycle', 'Motorcycle License'],
 	},
 };
 

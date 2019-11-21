@@ -12,7 +12,10 @@
 						</thead>
 						<tbody>
 							<tr v-for="company in companies" :key="company.name">
-								<td>{{ company.name }}</td>
+								<td>
+									<v-icon v-if="qualified(company)" color="green">{{ Icons.mdiCheckboxMarkedOutline }}</v-icon>
+									<v-icon v-else color="red">{{ Icons.mdiCloseBoxOutline }}</v-icon>
+								</td>
 								<td>{{ description(company) }}</td>
 							</tr>
 						</tbody>
@@ -26,22 +29,17 @@
 <script lang="ts">
 import { Component, Mixins } from "vue-property-decorator";
 import { Get } from "vuex-pathify";
-import { StringMixins } from "@/utils/string";
-
-interface Company {
-  name: string;
-  requirements: Array<string | string[]>;
-}
-
-interface BioData {
-  name: string;
-  qualifications: Array<string[]>;
-}
+import { StringMixins } from "@/utils/description";
+import { QualificationMixins } from "@/utils/qualification";
+import { mdiCheckboxMarkedOutline, mdiCloseBoxOutline } from "@mdi/js";
 
 @Component
-export default class JobTable extends Mixins<StringMixins>(StringMixins) {
+export default class JobTable extends Mixins(
+  StringMixins,
+  QualificationMixins
+) {
   @Get("company") private companies!: Company[];
-  @Get("bioData") private bio!: Company[];
+  @Get("bioData") private bioData!: BioData;
 
   // Generate job description based on conditions
   private description(company: Company): string {
@@ -67,11 +65,24 @@ export default class JobTable extends Mixins<StringMixins>(StringMixins) {
   }
 
   // Check job qualification
-//   private qualified(company: Company): boolean {
-//     const ANDRequirements: string = this.compulsoryRequirements(company);
-//     // const ORRequirements: string = this.conditionalRequirements(company);
+  private qualified(company: Company): boolean {
+    // If company has no requirements then return true immediately
+    if (company.requirements.length < 1) {
+      return true;
+    }
 
-//     return true;
-//   }
+    // Apply AND operator on both type of conditions (conditional and compulsory)
+    return (
+      this.requirementsQualified(company, this.bioData) &&
+      this.conditionalRequirementsQualified(company, this.bioData)
+    );
+  }
+
+  get Icons() {
+    return {
+      mdiCheckboxMarkedOutline,
+      mdiCloseBoxOutline
+    };
+  }
 }
 </script>
