@@ -6,7 +6,7 @@ const states = {
 		},
 		{
 			name: 'Company B',
-			requirements: [['5 Door Car', '4 Door Car'], 'Driver\'s License', 'Car Insurance'],
+			requirements: [['5 Door Car', '4 Door Car'], 'Driving License', 'Car Insurance'],
 		},
 		{
 			name: 'Company C',
@@ -18,11 +18,11 @@ const states = {
 		},
 		{
 			name: 'Company E',
-			requirements: ['Driver\'s License', ['5 Door Car', '4 Door Car', '3 Door Car', '2 Door Car']],
+			requirements: ['Driving License', ['5 Door Car', '4 Door Car', '3 Door Car', '2 Door Car']],
 		},
 		{
 			name: 'Company F',
-			requirements: [['Scooter', 'Bike', 'Motorcycle'], 'Driver\'s License', 'Motorcycle Insurance'],
+			requirements: [['Scooter', 'Bike', 'Motorcycle'], 'Driving License', 'Motorcycle Insurance'],
 		},
 		{
 			name: 'Company G',
@@ -42,9 +42,16 @@ const states = {
 		},
 		{
 			name: 'Company L',
-			requirements: [['PayPal Account', 'Bank Account'], ['Motorcycle', 'Car']],
+			requirements: [
+				['PayPal Account', 'Bank Account'],
+				['Motorcycle', 'Car'],
+			],
 		},
 	],
+	bioData: {
+		name: 'Jonny Escobar',
+		qualifications: ['PayPal', 'Motorcycle', 'Motorcycle License'],
+	},
 };
 
 export default states;
